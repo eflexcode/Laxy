@@ -24,8 +24,6 @@
         <!--            android:textStyle="bold" />-->
 
 
-
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,8 +35,8 @@
         <LinearLayout
             android:id="@+id/lin"
             android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
             android:layout_height="wrap_content"
-            android:layout_above="@id/account"
             android:orientation="vertical">
 
             <!--        <TextView-->
@@ -150,19 +148,9 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/account"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="I already have an account"
-            android:textColor="#000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/back"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:id="@+id/back"/>
+            android:layout_height="?attr/actionBarSize" />
     </RelativeLayout>
 </layout>

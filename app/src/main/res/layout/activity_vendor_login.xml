@@ -17,7 +17,7 @@
             android:layout_above="@id/lin"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/down" />
+            android:src="@drawable/down2" />
 
         <LinearLayout
             android:id="@+id/lin"
@@ -142,10 +142,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:text="I want to be a vendor"
-            android:textColor="#000"
             android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="I don't have an account"
+            android:textColor="#000"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.Toolbar

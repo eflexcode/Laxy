@@ -3,6 +3,7 @@ package com.eflexsoft.laxy;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -23,6 +24,15 @@ public class VendorLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+
+        binding.noAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(VendorLoginActivity.this,CreateAccountVendorActivity.class));
+
             }
         });
 

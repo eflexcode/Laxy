@@ -61,6 +61,7 @@
                 android:hint="Email Address"
                 android:textColor="#000"
                 android:textSize="13sp"
+                android:id="@+id/log_in_email"
                 app:met_errorColor="#FF1000"
                 app:met_floatingLabel="highlight"
                 app:met_floatingLabelAnimating="true"
@@ -79,6 +80,7 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="#000"
+                android:id="@+id/log_in_password"
                 android:textSize="13sp"
                 app:met_errorColor="#FF1000"
                 app:met_floatingLabel="highlight"
@@ -98,6 +100,7 @@
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:id="@+id/show_p"
                     android:layout_margin="5dp"
                     android:text="Show password"
                     android:textColor="#000" />
@@ -107,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:background="?android:selectableItemBackground"
                     android:gravity="center"
                     android:text="Forgot password"
@@ -119,6 +122,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:id="@+id/sign_in_now"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
@@ -143,6 +147,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
+                android:id="@+id/google_sign_in"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/sign_in_btn_background2"
                 android:drawableLeft="@drawable/ic_search"
