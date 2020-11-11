@@ -35,8 +35,8 @@
         <LinearLayout
             android:id="@+id/lin"
             android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
             <!--        <TextView-->
@@ -50,6 +50,7 @@
             <!--            android:textStyle="bold" />-->
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/full_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -68,6 +69,7 @@
                 app:met_textColor="#000" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -86,12 +88,14 @@
                 app:met_textColor="#000" />
 
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="30dp"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:textColor="#000"
                 android:textSize="13sp"
                 app:met_errorColor="#FF1000"
@@ -103,7 +107,28 @@
                 app:met_primaryColor="#FF5722"
                 app:met_textColor="#000" />
 
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/passwordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textColor="#000"
+                android:textSize="13sp"
+                app:met_errorColor="#FF1000"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelAnimating="true"
+                app:met_floatingLabelText="Confirm Password"
+                app:met_floatingLabelTextColor="#FF5722"
+                app:met_floatingLabelTextSize="12sp"
+                app:met_primaryColor="#FF5722"
+                app:met_textColor="#000" />
+
             <CheckBox
+                android:id="@+id/show_p"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
@@ -112,6 +137,7 @@
                 android:textColor="#000" />
 
             <Button
+                android:id="@+id/sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
@@ -152,5 +178,13 @@
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
+
+        <ProgressBar
+            android:id="@+id/pr_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
     </RelativeLayout>
 </layout>

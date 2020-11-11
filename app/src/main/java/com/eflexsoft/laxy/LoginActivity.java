@@ -15,11 +15,18 @@ import android.widget.CompoundButton;
 
 import com.eflexsoft.laxy.databinding.ActivityLoginBinding;
 import com.eflexsoft.laxy.viewmodel.UserLoginViewmodel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 public class LoginActivity extends AppCompatActivity {
 
     UserLoginViewmodel viewmodel;
     ProgressDialog progressDialog;
+
+    GoogleSignInOptions googleSignInOptions;
+    GoogleSignIn googleSignIn;
+    GoogleSignInClient signInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,17 +89,44 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding.showP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
 
                     activityLoginBinding.logInPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
-                }else {
+                } else {
+
                     activityLoginBinding.logInPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
                 }
             }
         });
 
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        signInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
+        activityLoginBinding.googleSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = signInClient.getSignInIntent();
+                startActivityForResult(intent, 4);
+
+            }
+        });
+
     }
 
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+
+        if (resultCode == 4) {
+            
+        }
+
+    }
 }

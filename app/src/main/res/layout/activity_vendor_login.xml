@@ -42,6 +42,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
+                android:id="@+id/email"
                 android:hint="Email Address"
                 android:textColor="#000"
                 android:textSize="13sp"
@@ -61,6 +62,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
                 android:hint="Password"
+                android:id="@+id/password"
                 android:inputType="textPassword"
                 android:textColor="#000"
                 android:textSize="13sp"
@@ -84,6 +86,7 @@
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
                     android:text="Show password"
+                    android:id="@+id/show_p"
                     android:textColor="#000" />
 
                 <TextView
@@ -104,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginStart="30dp"
+                android:id="@+id/sign_in_now"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/sign_in_btn_background"
@@ -152,6 +156,13 @@
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
+
+        <ProgressBar
+            android:id="@+id/pr_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
