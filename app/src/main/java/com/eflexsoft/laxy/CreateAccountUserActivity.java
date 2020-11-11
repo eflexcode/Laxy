@@ -14,11 +14,22 @@ import android.widget.CompoundButton;
 
 import com.eflexsoft.laxy.databinding.ActivityCreateAccountUserAcivityBinding;
 import com.eflexsoft.laxy.viewmodel.CreateAccountViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class CreateAccountUserActivity extends AppCompatActivity {
 
 
     CreateAccountViewModel viewModel;
+    GoogleSignInOptions googleSignInOptions;
+    GoogleSignIn googleSignIn;
+    GoogleSignInClient signInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +105,41 @@ public class CreateAccountUserActivity extends AppCompatActivity {
             }
         });
 
-    }
+        googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
+        acivityBinding.googleSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = signInClient.getSignInIntent();
+                startActivityForResult(intent, 4);
+
+            }
+        });
+    }
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+
+        if (resultCode == 4) {
+
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            GoogleSignInAccount account = null;
+            try {
+                account = task.getResult(ApiException.class);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+
+            assert account != null;
+            AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+
+            viewModel.doGoogleSignIn(authCredential);
+
+        }
+
+    }
 }

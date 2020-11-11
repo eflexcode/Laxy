@@ -16,8 +16,14 @@ import android.widget.CompoundButton;
 import com.eflexsoft.laxy.databinding.ActivityLoginBinding;
 import com.eflexsoft.laxy.viewmodel.UserLoginViewmodel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -125,7 +131,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityReenter(resultCode, data);
 
         if (resultCode == 4) {
-            
+
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            GoogleSignInAccount account = null;
+            try {
+                account = task.getResult(ApiException.class);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+
+            assert account != null;
+            AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+
+            viewmodel.doGoogleSignIn(authCredential);
+
         }
 
     }

@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.eflexsoft.laxy.repository.CreateAccountRepository;
+import com.google.firebase.auth.AuthCredential;
 
 public class CreateAccountViewModel extends AndroidViewModel {
 
@@ -30,5 +31,7 @@ public class CreateAccountViewModel extends AndroidViewModel {
         isSuccess = repository.isSuccess;
         return isSuccess;
     }
-
+    public void doGoogleSignIn(AuthCredential authCredential) {
+        repository.doGoogleSignIn(authCredential);
+    }
 }
