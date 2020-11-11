@@ -98,8 +98,8 @@ public class CreateAccountUserActivity extends AppCompatActivity {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     acivityBinding.prBar.setVisibility(View.GONE);
-                    startActivity(new Intent(CreateAccountUserActivity.this,MainActivity.class));
-                    finish();
+                    startActivity(new Intent(CreateAccountUserActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
                 } else {
                     acivityBinding.prBar.setVisibility(View.GONE);
                 }

@@ -42,7 +42,7 @@ public class CreateAccountVendorRepository {
 
                 String id = FirebaseAuth.getInstance().getUid();
 
-                DocumentReference documentReference = firebaseFirestore.collection("Users")
+                DocumentReference documentReference = firebaseFirestore.collection("Vendors")
                         .document(id);
 
                 documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {

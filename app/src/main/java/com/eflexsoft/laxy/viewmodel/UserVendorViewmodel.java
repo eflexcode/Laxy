@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.eflexsoft.laxy.repository.LoginUserRepository;
 import com.eflexsoft.laxy.repository.LoginVendorRepository;
+import com.google.firebase.auth.AuthCredential;
 
 public class UserVendorViewmodel extends AndroidViewModel {
 
@@ -29,6 +30,8 @@ public class UserVendorViewmodel extends AndroidViewModel {
 
         return isSignInSuccessful;
     }
-
+    public void doGoogleSignIn(AuthCredential authCredential) {
+        repository.doGoogleSignIn(authCredential);
+    }
 
 }

@@ -2,8 +2,10 @@ package com.eflexsoft.laxy;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -44,6 +46,18 @@ public class CreateAccountVendorActivity extends AppCompatActivity {
                 } else {
                     binding.passwordConfirm.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     binding.password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+
+        viewModel.getIsSucces().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    binding.prBar.setVisibility(View.GONE);
+                    startActivity(new Intent(CreateAccountVendorActivity.this,VendorMainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                } else {
+                    binding.prBar.setVisibility(View.GONE);
                 }
             }
         });
