@@ -57,6 +57,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
                 android:hint="Account Name"
+                android:id="@+id/account_name"
                 android:textColor="#000"
                 android:textSize="13sp"
                 app:met_errorColor="#FF1000"
@@ -77,6 +78,7 @@
                 android:hint="Office Address"
                 android:textColor="#000"
                 android:textSize="13sp"
+                android:id="@+id/address"
                 app:met_errorColor="#FF1000"
                 app:met_floatingLabel="highlight"
                 app:met_floatingLabelAnimating="true"
@@ -95,6 +97,7 @@
                 android:hint="Email Address"
                 android:textColor="#000"
                 android:textSize="13sp"
+               android:id="@+id/email"
                 app:met_errorColor="#FF1000"
                 app:met_floatingLabel="highlight"
                 app:met_floatingLabelAnimating="true"
@@ -113,6 +116,7 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:textColor="#000"
+                android:id="@+id/password"
                 android:textSize="13sp"
                 app:met_errorColor="#FF1000"
                 app:met_floatingLabel="highlight"
@@ -132,6 +136,7 @@
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:textColor="#000"
+                android:id="@+id/passwordConfirm"
                 android:textSize="13sp"
                 app:met_errorColor="#FF1000"
                 app:met_floatingLabel="highlight"
@@ -152,6 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
+                    android:id="@+id/show_p"
                     android:text="Show passwords"
                     android:textColor="#000" />
 
@@ -166,6 +172,7 @@
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/sign_in_btn_background"
                 android:text="Continue"
+                android:id="@+id/button_continue"
                 android:textAllCaps="false"
                 android:textColor="#fff" />
 
@@ -200,7 +207,12 @@
             android:id="@+id/back"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
-
+        <ProgressBar
+            android:id="@+id/pr_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
     </RelativeLayout>
 </layout>

@@ -1,5 +1,6 @@
 package com.eflexsoft.laxy;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -12,6 +13,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.eflexsoft.laxy.databinding.ActivityLoginBinding;
 import com.eflexsoft.laxy.viewmodel.UserLoginViewmodel;
@@ -127,10 +129,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onActivityReenter(int resultCode, Intent data) {
-        super.onActivityReenter(resultCode, data);
-
-        if (resultCode == 4) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 4) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             GoogleSignInAccount account = null;
@@ -144,8 +145,7 @@ public class LoginActivity extends AppCompatActivity {
             AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
 
             viewmodel.doGoogleSignIn(authCredential);
-
-        }
-
+            progressDialog.show();        }
     }
+
 }

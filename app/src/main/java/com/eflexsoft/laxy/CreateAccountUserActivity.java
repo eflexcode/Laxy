@@ -1,5 +1,6 @@
 package com.eflexsoft.laxy;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -30,13 +31,14 @@ public class CreateAccountUserActivity extends AppCompatActivity {
     GoogleSignInOptions googleSignInOptions;
     GoogleSignIn googleSignIn;
     GoogleSignInClient signInClient;
+    ActivityCreateAccountUserAcivityBinding acivityBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_create_account_user_acivity);
 
-        ActivityCreateAccountUserAcivityBinding acivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_account_user_acivity);
+        acivityBinding = DataBindingUtil.setContentView(this, R.layout.activity_create_account_user_acivity);
 
         acivityBinding.back.setNavigationIcon(R.drawable.ic_left_arrow1);
         acivityBinding.back.setNavigationOnClickListener(new View.OnClickListener() {
@@ -45,7 +47,6 @@ public class CreateAccountUserActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         viewModel = new ViewModelProvider(this).get(CreateAccountViewModel.class);
 
@@ -110,6 +111,8 @@ public class CreateAccountUserActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
+        signInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+
         acivityBinding.googleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,11 +123,11 @@ public class CreateAccountUserActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onActivityReenter(int resultCode, Intent data) {
-        super.onActivityReenter(resultCode, data);
 
-        if (resultCode == 4) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 4) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             GoogleSignInAccount account = null;
@@ -138,8 +141,7 @@ public class CreateAccountUserActivity extends AppCompatActivity {
             AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
 
             viewModel.doGoogleSignIn(authCredential);
-
+            acivityBinding.prBar.setVisibility(View.VISIBLE);
         }
-
     }
 }
